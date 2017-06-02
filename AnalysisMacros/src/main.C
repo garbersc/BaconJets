@@ -16,11 +16,16 @@ int main(){
   TString generator    = "pythia";
   bool    closure_test    = false;
   bool    trigger_fwd     = true;    //Use for Weight Calc
-  bool    trigger_central = false;     //Use for Weight Calc
+  bool    trigger_central = true;     //Use for Weight Calc
   TString collection    = "AK4CHS";
 
-    TString input_path   = "/nfs/dust/cms/user/multh/JEC/2016ReReco/Residuals/Summer16_03Feb2017_V3/AK4CHS/MC_Reweighted_chsMET_ForWeights_Down/FWD/";
-    TString weight_path  = "/nfs/dust/cms/user/multh/JEC/2016ReReco/Residuals/Summer16_03Feb2017_V3/AK4CHS/MC_Reweighted_chsMET_ForWeights_Down/";
+
+    TString input_path   = "/nfs/dust/cms/user/karavdia/JEC_80X_03FebreMINIAOD_JEC_Summer16_03Feb2016_V3_TEST_EFs_woMEToverPt/";
+    TString weight_path  = "/nfs/dust/cms/user/karavdia/JEC_80X_03FebreMINIAOD_JEC_Summer16_03Feb2016_V3_TEST_EFs_woMEToverPt/";
+
+    // TString input_path   = "/nfs/dust/cms/user/multh/JEC/2016ReReco/Residuals/Summer16_03Feb2017_V3/AK4CHS/MC_Reweighted_chsMET_ForWeights_Down/FWD/";
+    // TString weight_path  = "/nfs/dust/cms/user/multh/JEC/2016ReReco/Residuals/Summer16_03Feb2017_V3/AK4CHS/MC_Reweighted_chsMET_ForWeights_Down/";
+
 
 
   //  TString input_path   = "/nfs/dust/cms/user/multh/JEC/2016ReReco/Residuals/Summer16_03Feb2017_V0/AK4CHS/MC_Reweighted_chsMET/";
@@ -33,9 +38,9 @@ int main(){
    //eine Klasse: enthaelt Info ueber runnr, Generator, collection, Strings zu MC/DATA-files, memberfunctions: controlPlots, kFSR etc.
   vector<CorrectionObject> Objects;
 
-   Objects.emplace_back(CorrectionObject("BCD", generator,collection, input_path, weight_path, closure_test, trigger_fwd, trigger_central));
+  /*   Objects.emplace_back(CorrectionObject("BCD", generator,collection, input_path, weight_path, closure_test, trigger_fwd, trigger_central));
    Objects.emplace_back(CorrectionObject("EFearly", generator,collection, input_path, weight_path, closure_test, trigger_fwd, trigger_central));
-   Objects.emplace_back(CorrectionObject("FlateG", generator,collection, input_path, weight_path, closure_test, trigger_fwd, trigger_central));
+   Objects.emplace_back(CorrectionObject("FlateG", generator,collection, input_path, weight_path, closure_test, trigger_fwd, trigger_central));*/
    Objects.emplace_back(CorrectionObject("H", generator,collection, input_path, weight_path, closure_test, trigger_fwd, trigger_central));
   
   //Objects.emplace_back(CorrectionObject("BCDEFGH", generator,collection, input_path, weight_path, closure_test));
@@ -44,7 +49,7 @@ int main(){
 
   //for(unsigned int i=0; i<Objects.size(); i++) Objects[i].CalculateMCWeights();
 
-if(trigger_central && !trigger_fwd){
+  /* if(trigger_central && !trigger_fwd){
   for(unsigned int i=0; i<Objects.size(); i++) Objects[i].CalculateMCWeights_TriggerThresholds(true);  //Central Triggers
 }
 else if(!trigger_central && trigger_fwd){
@@ -52,7 +57,8 @@ else if(!trigger_central && trigger_fwd){
 }
 else {
 	cout<<"No Weight Calculation"<<endl;
-}
+	}*/
+
   //for(unsigned int i=0; i<Objects.size(); i++) Objects[i].ControlPlots();
 
   //for(unsigned int i=0; i<Objects.size(); i++) Objects[i].kFSR();
@@ -75,7 +81,7 @@ else {
   //for(unsigned int i=0; i<Objects.size(); i++) Objects[i].InputForGlobalFit_eta_0_13();
 
   //for(unsigned int i=0; i<Objects.size(); i++) Objects[i].FinalControlPlots();
-  //for(unsigned int i=0; i<Objects.size(); i++) Objects[i].FinalControlPlots_CorrectFormulae();
+  // for(unsigned int i=0; i<Objects.size(); i++) Objects[i].FinalControlPlots_CorrectFormulae();
 // for(unsigned int i=0; i<Objects.size(); i++) Objects[i].FinalControlPlots_CorrectFormulae_eta();
 
 //for(unsigned int i=0; i<Objects.size(); i++) Objects[i].FullCycle_CorrectFormulae();
@@ -83,9 +89,8 @@ else {
   //  Objects[0].L2ResAllRuns();
   //  Objects[0].L2ResOverlay(true);
   //  Objects[0].L2ResOverlay(false);
-  //  for(unsigned int i=0; i<Objects.size(); i++) Objects[i].FinalControlPlots_CorrectFormulae();
-
-// for(unsigned int i=0; i<Objects.size(); i++) Objects[i].FullCycle_CorrectFormulae();
+  for(unsigned int i=0; i<Objects.size(); i++) Objects[i].FinalControlPlots_CorrectFormulae();
+  //for(unsigned int i=0; i<Objects.size(); i++) Objects[i].FullCycle_CorrectFormulae();
   
 //  Objects[0].L2ResAllRuns();
 //  Objects[0].L2ResOverlay();

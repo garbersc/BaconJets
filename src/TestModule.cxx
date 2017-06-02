@@ -69,7 +69,7 @@ using namespace uhh2;
 
     // selections
     std::unique_ptr<uhh2::Selection> lumi_sel;
-    //    std::unique_ptr<uhh2::AndSelection> metfilters_sel;     
+    std::unique_ptr<uhh2::AndSelection> metfilters_sel;     
     //    std::unique_ptr<uhh2::AndSelection> trigger_sel;
     std::unique_ptr<uhh2::Selection> trigger40_sel;
     std::unique_ptr<uhh2::Selection> trigger60_sel;
@@ -93,6 +93,12 @@ using namespace uhh2;
     Event::Handle<float> tt_jet1_ptGen;  Event::Handle<float> tt_jet2_ptGen;  Event::Handle<float> tt_jet3_ptGen;
     Event::Handle<float> tt_gen_pthat; Event::Handle<float> tt_gen_weight;  Event::Handle<float> tt_gen_PUpthat;
     Event::Handle<float> tt_jet1_pt;     Event::Handle<float> tt_jet2_pt;     Event::Handle<float> tt_jet3_pt;
+
+    //Different energy fractions in jets
+    Event::Handle<float> tt_probejet_neutEmEF; Event::Handle<float> tt_probejet_neutHadEF; 
+    Event::Handle<float> tt_probejet_chEmEF; Event::Handle<float> tt_probejet_chHadEF; 
+    Event::Handle<float> tt_probejet_photonEF; Event::Handle<float> tt_probejet_muonEF; 
+
     Event::Handle<float> tt_jet1_ptRaw;  Event::Handle<float> tt_jet2_ptRaw;  Event::Handle<float> tt_jet3_ptRaw;
     Event::Handle<int> tt_nvertices;
     Event::Handle<float> tt_probejet_eta;  Event::Handle<float> tt_probejet_phi; Event::Handle<float> tt_probejet_pt; Event::Handle<float> tt_probejet_ptRaw;
@@ -114,7 +120,7 @@ using namespace uhh2;
     Event::Handle<int> tt_flavorBarreljet, tt_flavorProbejet, tt_flavorLeadingjet, tt_flavorSubleadingjet; //only MC
     Event::Handle<float> tt_responseBarreljet, tt_responseProbejet; //only MC
     Event::Handle<float> tt_response_leadingjet;
-    Event::Handle<float> tt_had_n_Efrac, tt_had_ch_Efrac, tt_mu_Efrac, tt_ph_Efrac;
+    //    Event::Handle<float> tt_had_n_Efrac, tt_had_ch_Efrac, tt_mu_Efrac, tt_ph_Efrac;
     Event::Handle<float> tt_inst_lumi, tt_integrated_lumi_in_bin, tt_integrated_lumi;
     Event::Handle<int> tt_lumibin;
     Event::Handle<int> tt_Nmuon; Event::Handle<float> tt_muon_pt;
@@ -165,13 +171,13 @@ using namespace uhh2;
     //// COMMON MODULES
     if(!isMC) lumi_sel.reset(new LumiSelection(ctx));
     /* MET filters */ 
-    /*    metfilters_sel.reset(new uhh2::AndSelection(ctx, "metfilters")); 
+    metfilters_sel.reset(new uhh2::AndSelection(ctx, "metfilters")); 
     metfilters_sel->add<TriggerSelection>("1-good-vtx", "Flag_goodVertices"); 
     metfilters_sel->add<TriggerSelection>("globalTightHalo2016Filter", "Flag_globalTightHalo2016Filter"); 
     metfilters_sel->add<TriggerSelection>("HBHENoiseFilter", "Flag_HBHENoiseFilter");        
     metfilters_sel->add<TriggerSelection>("HBHENoiseIsoFilter", "Flag_HBHENoiseIsoFilter");
     metfilters_sel->add<TriggerSelection>("EcalDeadCellTriggerPrimitiveFilter", "Flag_EcalDeadCellTriggerPrimitiveFilter"); 
-    //    metfilters_sel->add<TriggerSelection>("CSCTightHalo2016Filter", "Flag_CSCTightHalo2016Filter"); */
+    metfilters_sel->add<TriggerSelection>("CSCTightHalo2016Filter", "Flag_CSCTightHalo2016Filter"); 
    
     Jet_PFID = JetPFID(JetPFID::WP_LOOSE);
     //Jet_PFID = JetPFID(JetPFID::WP_TIGHT);
@@ -510,6 +516,15 @@ using namespace uhh2;
     tt_jet1_ptGen = ctx.declare_event_output<float>("jet1_ptGen");
     tt_jet2_ptGen = ctx.declare_event_output<float>("jet2_ptGen");
     tt_jet3_ptGen = ctx.declare_event_output<float>("jet3_ptGen");
+
+    tt_probejet_neutEmEF = ctx.declare_event_output<float>("probejet_neutEmEF");
+    tt_probejet_neutHadEF = ctx.declare_event_output<float>("probejet_neutHadEF");
+    tt_probejet_chEmEF = ctx.declare_event_output<float>("probejet_chEmEF");
+    tt_probejet_chHadEF = ctx.declare_event_output<float>("probejet_chHadEF");
+    tt_probejet_photonEF = ctx.declare_event_output<float>("probejet_photonEF");
+    tt_probejet_muonEF = ctx.declare_event_output<float>("probejet_muonEF");
+
+
     tt_nvertices = ctx.declare_event_output<int>("nvertices");
     tt_nGoodvertices = ctx.declare_event_output<int>("nGoodvertices");
     tt_probejet_eta = ctx.declare_event_output<float>("probejet_eta");
@@ -542,10 +557,10 @@ using namespace uhh2;
     tt_flavorLeadingjet = ctx.declare_event_output<int>("flavorLeadingjet");
     tt_flavorSubleadingjet = ctx.declare_event_output<int>("flavorSubleadingjet");
     tt_response_leadingjet = ctx.declare_event_output<float>("leadingjet_response");
-    tt_had_n_Efrac = ctx.declare_event_output<float>("neutralhad_Efraction");
-    tt_had_ch_Efrac = ctx.declare_event_output<float>("chargedhad_Efraction");
-    tt_mu_Efrac = ctx.declare_event_output<float>("mu_Efraction");
-    tt_ph_Efrac = ctx.declare_event_output<float>("photon_Efraction");
+    // tt_had_n_Efrac = ctx.declare_event_output<float>("neutralhad_Efraction");
+    // tt_had_ch_Efrac = ctx.declare_event_output<float>("chargedhad_Efraction");
+    // tt_mu_Efrac = ctx.declare_event_output<float>("mu_Efraction");
+    // tt_ph_Efrac = ctx.declare_event_output<float>("photon_Efraction");
     tt_inst_lumi = ctx.declare_event_output<float>("instantaneous_lumi");
     tt_integrated_lumi_in_bin = ctx.declare_event_output<float>("integrated_lumi_in_bin");
     tt_lumibin = ctx.declare_event_output<int>("lumibin");
@@ -1264,11 +1279,10 @@ using namespace uhh2;
     
     int flavor = 0;
     
-// >>>>>>> 8020_2016ReReco
-    double had_n_Efrac = event.jets->at(0).neutralHadronEnergyFraction();
-    double had_ch_Efrac = event.jets->at(0).chargedHadronEnergyFraction();
-    double mu_Efrac = event.jets->at(0).muonEnergyFraction();
-    double ph_Efrac = event.jets->at(0).photonEnergyFraction();
+    // double had_n_Efrac = event.jets->at(0).neutralHadronEnergyFraction();
+    // double had_ch_Efrac = event.jets->at(0).chargedHadronEnergyFraction();
+    // double mu_Efrac = event.jets->at(0).muonEnergyFraction();
+    // double ph_Efrac = event.jets->at(0).photonEnergyFraction();
 
  //fill the containers
     double pu_pthat = -1;
@@ -1286,6 +1300,14 @@ using namespace uhh2;
     event.set(tt_jet2_ptGen,genjet2_pt);
     event.set(tt_jet3_ptGen,genjet3_pt);
     event.set(tt_nvertices,nvertices);
+
+    event.set(tt_probejet_neutEmEF,jet_probe->neutralEmEnergyFraction());
+    event.set(tt_probejet_neutHadEF,jet_probe->neutralHadronEnergyFraction());
+    event.set(tt_probejet_chEmEF,jet_probe->chargedEmEnergyFraction());
+    event.set(tt_probejet_chHadEF,jet_probe->chargedHadronEnergyFraction());
+    event.set(tt_probejet_photonEF,jet_probe->photonEnergyFraction());
+    event.set(tt_probejet_muonEF,jet_probe->muonEnergyFraction());
+
     event.set(tt_probejet_eta,probejet_eta);
     event.set(tt_probejet_phi,probejet_phi);
     event.set(tt_probejet_pt,probejet_pt);
@@ -1307,10 +1329,10 @@ using namespace uhh2;
     event.set(tt_jet_n,jet_n);
     event.set(tt_rho,event.rho);    
     event.set(tt_partonFlavor,flavor); 
-    event.set(tt_had_n_Efrac,had_n_Efrac);
-    event.set(tt_had_ch_Efrac,had_ch_Efrac);
-    event.set(tt_mu_Efrac,mu_Efrac);    
-    event.set(tt_ph_Efrac,ph_Efrac); 
+    // event.set(tt_had_n_Efrac,had_n_Efrac);
+    // event.set(tt_had_ch_Efrac,had_ch_Efrac);
+    // event.set(tt_mu_Efrac,mu_Efrac);    
+    // event.set(tt_ph_Efrac,ph_Efrac); 
     event.set(tt_inst_lumi,inst_lumi);
     event.set(tt_integrated_lumi_in_bin,fill_event_integrated_lumi);
     event.set(tt_lumibin,event_in_lumibin);
