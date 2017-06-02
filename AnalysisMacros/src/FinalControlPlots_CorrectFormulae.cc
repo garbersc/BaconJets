@@ -366,6 +366,7 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       hdata_probejet_chEmEF[k][j]->Write();
       hdata_probejet_chHadEF[k][j]->Write();
       hdata_probejet_photonEF[k][j]->Write();
+      hdata_probejet_muonEF[k][j]->Write();
       hdata_probejet_phi[k][j]->Write();
     }
   }
@@ -827,7 +828,7 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       TString legname = "p_{T} #in [" + pt_range[j] + "," + pt_range[j+1] + "]";
       TString name_probejet_neutEmEF_mc = "hist_mc_probejet_neutEmEF_"+eta_name+"_"+pt_name;
       htemp_probejet_neutEmEF_mc = (TH1D*)f_mpf_mc->Get(name_probejet_neutEmEF_mc);
-      htemp_probejet_neutEmEF_mc->Print();
+      //      htemp_probejet_neutEmEF_mc->Print();
       int n_ev =  htemp_probejet_neutEmEF_mc->GetEntries();
       if(htemp_probejet_neutEmEF_mc->Integral() > 0)htemp_probejet_neutEmEF_mc->Scale(1/htemp_probejet_neutEmEF_mc->Integral());
       hEF->GetXaxis()->SetTitle("probejet neutralEmEF");
@@ -836,7 +837,8 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       // h->SetMaximum(0.3);
       hEF->GetXaxis()->SetLimits(0,1.5);
       //      h->GetYaxis()->SetLimits(0,0.8);
-      hEF->SetMaximum(0.8);
+      //      hEF->SetMaximum(0.8);
+      hEF->SetMaximum(0.1);
       if(j<9) htemp_probejet_neutEmEF_mc->SetLineColor(j+1);
       else    htemp_probejet_neutEmEF_mc->SetLineColor(j+31);
       htemp_probejet_neutEmEF_mc->SetLineWidth(3);
@@ -860,7 +862,7 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       TString legname = "p_{T} #in [" + pt_range[j] + "," + pt_range[j+1] + "]";
       TString name_probejet_neutEmEF_data = "hist_data_probejet_neutEmEF_"+eta_name+"_"+pt_name;
       htemp_probejet_neutEmEF_data = (TH1D*)f_mpf_data->Get(name_probejet_neutEmEF_data);
-      htemp_probejet_neutEmEF_data->Print();
+      //      htemp_probejet_neutEmEF_data->Print();
       int n_ev =  htemp_probejet_neutEmEF_data->GetEntries();
       if(htemp_probejet_neutEmEF_data->Integral() > 0)htemp_probejet_neutEmEF_data->Scale(1/htemp_probejet_neutEmEF_data->Integral());
       hEF->GetXaxis()->SetTitle("probejet neutralEmEF");
@@ -869,7 +871,8 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       // h->SetMaximum(0.3);
       hEF->GetXaxis()->SetLimits(0,1.5);
       //      h->GetYaxis()->SetLimits(0,0.8);
-      hEF->SetMaximum(0.8);
+      //      hEF->SetMaximum(0.8);
+      hEF->SetMaximum(0.1);
       if(j<9) htemp_probejet_neutEmEF_data->SetLineColor(j+1);
       else    htemp_probejet_neutEmEF_data->SetLineColor(j+31);
       htemp_probejet_neutEmEF_data->SetLineWidth(3);
@@ -893,7 +896,7 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       TString legname = "p_{T} #in [" + pt_range[j] + "," + pt_range[j+1] + "]";
       TString name_probejet_neutHadEF_mc = "hist_mc_probejet_neutHadEF_"+eta_name+"_"+pt_name;
       htemp_probejet_neutHadEF_mc = (TH1D*)f_mpf_mc->Get(name_probejet_neutHadEF_mc);
-      htemp_probejet_neutHadEF_mc->Print();
+      //      htemp_probejet_neutHadEF_mc->Print();
       int n_ev =  htemp_probejet_neutHadEF_mc->GetEntries();
       if(htemp_probejet_neutHadEF_mc->Integral() > 0)htemp_probejet_neutHadEF_mc->Scale(1/htemp_probejet_neutHadEF_mc->Integral());
       hEF->GetXaxis()->SetTitle("probejet neutralHadEF");
@@ -901,7 +904,8 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       hEF->GetYaxis()->SetTitleOffset(1.5);
       // h->SetMaximum(0.3);
       hEF->GetXaxis()->SetLimits(0,1.5);
-      hEF->GetYaxis()->SetLimits(0,0.1);
+      //      hEF->GetYaxis()->SetLimits(0,0.1);
+      hEF->SetMaximum(0.1);
       //      hEF->SetMaximum(0.8);
       if(j<9) htemp_probejet_neutHadEF_mc->SetLineColor(j+1);
       else    htemp_probejet_neutHadEF_mc->SetLineColor(j+31);
@@ -925,7 +929,7 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       TString legname = "p_{T} #in [" + pt_range[j] + "," + pt_range[j+1] + "]";
       TString name_probejet_neutHadEF_data = "hist_data_probejet_neutHadEF_"+eta_name+"_"+pt_name;
       htemp_probejet_neutHadEF_data = (TH1D*)f_mpf_data->Get(name_probejet_neutHadEF_data);
-      htemp_probejet_neutHadEF_data->Print();
+      //      htemp_probejet_neutHadEF_data->Print();
       int n_ev =  htemp_probejet_neutHadEF_data->GetEntries();
       if(htemp_probejet_neutHadEF_data->Integral() > 0)htemp_probejet_neutHadEF_data->Scale(1/htemp_probejet_neutHadEF_data->Integral());
       hEF->GetXaxis()->SetTitle("probejet neutralHadEF");
@@ -933,7 +937,8 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       hEF->GetYaxis()->SetTitleOffset(1.5);
       // h->SetMaximum(0.3);
       hEF->GetXaxis()->SetLimits(0,1.5);
-      hEF->GetYaxis()->SetLimits(0,0.1);
+      //      hEF->GetYaxis()->SetLimits(0,0.1);
+      hEF->SetMaximum(0.1);
       //hEF->SetMaximum(0.8);
       if(j<9) htemp_probejet_neutHadEF_data->SetLineColor(j+1);
       else    htemp_probejet_neutHadEF_data->SetLineColor(j+31);
@@ -959,7 +964,7 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       TString legname = "p_{T} #in [" + pt_range[j] + "," + pt_range[j+1] + "]";
       TString name_probejet_chEmEF_mc = "hist_mc_probejet_chEmEF_"+eta_name+"_"+pt_name;
       htemp_probejet_chEmEF_mc = (TH1D*)f_mpf_mc->Get(name_probejet_chEmEF_mc);
-      htemp_probejet_chEmEF_mc->Print();
+      //      htemp_probejet_chEmEF_mc->Print();
       int n_ev =  htemp_probejet_chEmEF_mc->GetEntries();
       if(htemp_probejet_chEmEF_mc->Integral() > 0)htemp_probejet_chEmEF_mc->Scale(1/htemp_probejet_chEmEF_mc->Integral());
       hEF->GetXaxis()->SetTitle("probejet chEmEF");
@@ -967,8 +972,8 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       hEF->GetYaxis()->SetTitleOffset(1.5);
       // h->SetMaximum(0.3);
       hEF->GetXaxis()->SetLimits(0,1.5);
-      hEF->GetYaxis()->SetLimits(0,0.1);
-      //      hEF->SetMaximum(0.8);
+      //  hEF->GetYaxis()->SetLimits(0,0.1);
+      hEF->SetMaximum(0.1);
       if(j<9) htemp_probejet_chEmEF_mc->SetLineColor(j+1);
       else    htemp_probejet_chEmEF_mc->SetLineColor(j+31);
       htemp_probejet_chEmEF_mc->SetLineWidth(3);
@@ -991,7 +996,7 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       TString legname = "p_{T} #in [" + pt_range[j] + "," + pt_range[j+1] + "]";
       TString name_probejet_chEmEF_data = "hist_data_probejet_chEmEF_"+eta_name+"_"+pt_name;
       htemp_probejet_chEmEF_data = (TH1D*)f_mpf_data->Get(name_probejet_chEmEF_data);
-      htemp_probejet_chEmEF_data->Print();
+      //      htemp_probejet_chEmEF_data->Print();
       int n_ev =  htemp_probejet_chEmEF_data->GetEntries();
       if(htemp_probejet_chEmEF_data->Integral() > 0)htemp_probejet_chEmEF_data->Scale(1/htemp_probejet_chEmEF_data->Integral());
       hEF->GetXaxis()->SetTitle("probejet chEmEF");
@@ -999,7 +1004,8 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       hEF->GetYaxis()->SetTitleOffset(1.5);
       // h->SetMaximum(0.3);
       hEF->GetXaxis()->SetLimits(0,1.5);
-      hEF->GetYaxis()->SetLimits(0,0.1);
+      //      hEF->GetYaxis()->SetLimits(0,0.1);
+      hEF->SetMaximum(0.1);
       //hEF->SetMaximum(0.8);
       if(j<9) htemp_probejet_chEmEF_data->SetLineColor(j+1);
       else    htemp_probejet_chEmEF_data->SetLineColor(j+31);
@@ -1024,7 +1030,7 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       TString legname = "p_{T} #in [" + pt_range[j] + "," + pt_range[j+1] + "]";
       TString name_probejet_chHadEF_mc = "hist_mc_probejet_chHadEF_"+eta_name+"_"+pt_name;
       htemp_probejet_chHadEF_mc = (TH1D*)f_mpf_mc->Get(name_probejet_chHadEF_mc);
-      htemp_probejet_chHadEF_mc->Print();
+      //      htemp_probejet_chHadEF_mc->Print();
       int n_ev =  htemp_probejet_chHadEF_mc->GetEntries();
       if(htemp_probejet_chHadEF_mc->Integral() > 0)htemp_probejet_chHadEF_mc->Scale(1/htemp_probejet_chHadEF_mc->Integral());
       hEF->GetXaxis()->SetTitle("probejet chHadEF");
@@ -1032,7 +1038,8 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       hEF->GetYaxis()->SetTitleOffset(1.5);
       // h->SetMaximum(0.3);
       hEF->GetXaxis()->SetLimits(0,1.5);
-      hEF->GetYaxis()->SetLimits(0,0.1);
+      //      hEF->GetYaxis()->SetLimits(0,0.1);
+      hEF->SetMaximum(0.1);
       //      hEF->SetMaximum(0.8);
       if(j<9) htemp_probejet_chHadEF_mc->SetLineColor(j+1);
       else    htemp_probejet_chHadEF_mc->SetLineColor(j+31);
@@ -1056,7 +1063,7 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       TString legname = "p_{T} #in [" + pt_range[j] + "," + pt_range[j+1] + "]";
       TString name_probejet_chHadEF_data = "hist_data_probejet_chHadEF_"+eta_name+"_"+pt_name;
       htemp_probejet_chHadEF_data = (TH1D*)f_mpf_data->Get(name_probejet_chHadEF_data);
-      htemp_probejet_chHadEF_data->Print();
+      //      htemp_probejet_chHadEF_data->Print();
       int n_ev =  htemp_probejet_chHadEF_data->GetEntries();
       if(htemp_probejet_chHadEF_data->Integral() > 0)htemp_probejet_chHadEF_data->Scale(1/htemp_probejet_chHadEF_data->Integral());
       hEF->GetXaxis()->SetTitle("probejet chHadEF");
@@ -1064,7 +1071,8 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       hEF->GetYaxis()->SetTitleOffset(1.5);
       // h->SetMaximum(0.3);
       hEF->GetXaxis()->SetLimits(0,1.5);
-      hEF->GetYaxis()->SetLimits(0,0.1);
+      //      hEF->GetYaxis()->SetLimits(0,0.1);
+      hEF->SetMaximum(0.1);
       //hEF->SetMaximum(0.8);
       if(j<9) htemp_probejet_chHadEF_data->SetLineColor(j+1);
       else    htemp_probejet_chHadEF_data->SetLineColor(j+31);
@@ -1089,15 +1097,16 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       TString legname = "p_{T} #in [" + pt_range[j] + "," + pt_range[j+1] + "]";
       TString name_probejet_photonEF_mc = "hist_mc_probejet_photonEF_"+eta_name+"_"+pt_name;
       htemp_probejet_photonEF_mc = (TH1D*)f_mpf_mc->Get(name_probejet_photonEF_mc);
-      htemp_probejet_photonEF_mc->Print();
+      //      htemp_probejet_photonEF_mc->Print();
       int n_ev =  htemp_probejet_photonEF_mc->GetEntries();
       if(htemp_probejet_photonEF_mc->Integral() > 0)htemp_probejet_photonEF_mc->Scale(1/htemp_probejet_photonEF_mc->Integral());
       hEF->GetXaxis()->SetTitle("probejet photonEF");
       hEF->GetYaxis()->SetTitle("Norm. Entries");
       hEF->GetYaxis()->SetTitleOffset(1.5);
       // h->SetMaximum(0.3);
+      hEF->SetMaximum(0.1);
       hEF->GetXaxis()->SetLimits(0,1.5);
-      hEF->GetYaxis()->SetLimits(0,0.1);
+      //      hEF->GetYaxis()->SetLimits(0,0.1);
       //      hEF->SetMaximum(0.8);
       if(j<9) htemp_probejet_photonEF_mc->SetLineColor(j+1);
       else    htemp_probejet_photonEF_mc->SetLineColor(j+31);
@@ -1121,7 +1130,7 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       TString legname = "p_{T} #in [" + pt_range[j] + "," + pt_range[j+1] + "]";
       TString name_probejet_photonEF_data = "hist_data_probejet_photonEF_"+eta_name+"_"+pt_name;
       htemp_probejet_photonEF_data = (TH1D*)f_mpf_data->Get(name_probejet_photonEF_data);
-      htemp_probejet_photonEF_data->Print();
+      //      htemp_probejet_photonEF_data->Print();
       int n_ev =  htemp_probejet_photonEF_data->GetEntries();
       if(htemp_probejet_photonEF_data->Integral() > 0)htemp_probejet_photonEF_data->Scale(1/htemp_probejet_photonEF_data->Integral());
       hEF->GetXaxis()->SetTitle("probejet photonEF");
@@ -1129,7 +1138,8 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       hEF->GetYaxis()->SetTitleOffset(1.5);
       // h->SetMaximum(0.3);
       hEF->GetXaxis()->SetLimits(0,1.5);
-      hEF->GetYaxis()->SetLimits(0,0.1);
+      //      hEF->GetYaxis()->SetLimits(0,0.1);
+      hEF->SetMaximum(0.1);
       //hEF->SetMaximum(0.8);
       if(j<9) htemp_probejet_photonEF_data->SetLineColor(j+1);
       else    htemp_probejet_photonEF_data->SetLineColor(j+31);
@@ -1154,7 +1164,7 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       TString legname = "p_{T} #in [" + pt_range[j] + "," + pt_range[j+1] + "]";
       TString name_probejet_muonEF_mc = "hist_mc_probejet_muonEF_"+eta_name+"_"+pt_name;
       htemp_probejet_muonEF_mc = (TH1D*)f_mpf_mc->Get(name_probejet_muonEF_mc);
-      htemp_probejet_muonEF_mc->Print();
+      //      htemp_probejet_muonEF_mc->Print();
       int n_ev =  htemp_probejet_muonEF_mc->GetEntries();
       if(htemp_probejet_muonEF_mc->Integral() > 0)htemp_probejet_muonEF_mc->Scale(1/htemp_probejet_muonEF_mc->Integral());
       hEF->GetXaxis()->SetTitle("probejet muonEF");
@@ -1162,7 +1172,8 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       hEF->GetYaxis()->SetTitleOffset(1.5);
       // h->SetMaximum(0.3);
       hEF->GetXaxis()->SetLimits(0,1.5);
-      hEF->GetYaxis()->SetLimits(0,0.1);
+      //      hEF->GetYaxis()->SetLimits(0,0.1);
+      hEF->SetMaximum(0.1);
       //      hEF->SetMaximum(0.8);
       if(j<9) htemp_probejet_muonEF_mc->SetLineColor(j+1);
       else    htemp_probejet_muonEF_mc->SetLineColor(j+31);
@@ -1194,8 +1205,8 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       hEF->GetYaxis()->SetTitleOffset(1.5);
       // h->SetMaximum(0.3);
       hEF->GetXaxis()->SetLimits(0,1.5);
-      hEF->GetYaxis()->SetLimits(0,0.1);
-      //hEF->SetMaximum(0.8);
+      //hEF->GetYaxis()->SetLimits(0,0.1);
+      hEF->SetMaximum(0.1);
       if(j<9) htemp_probejet_muonEF_data->SetLineColor(j+1);
       else    htemp_probejet_muonEF_data->SetLineColor(j+31);
       htemp_probejet_muonEF_data->SetLineWidth(3);
@@ -1219,15 +1230,17 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       TString legname = "p_{T} #in [" + pt_range[j] + "," + pt_range[j+1] + "]";
       TString name_probejet_phi_mc = "hist_mc_probejet_phi_"+eta_name+"_"+pt_name;
       htemp_probejet_phi_mc = (TH1D*)f_mpf_mc->Get(name_probejet_phi_mc);
-      htemp_probejet_phi_mc->Print();
+      //      htemp_probejet_phi_mc->Print();
       int n_ev =  htemp_probejet_phi_mc->GetEntries();
       if(htemp_probejet_phi_mc->Integral() > 0)htemp_probejet_phi_mc->Scale(1/htemp_probejet_phi_mc->Integral());
       hEF->GetXaxis()->SetTitle("probejet phi");
       hEF->GetYaxis()->SetTitle("Norm. Entries");
       hEF->GetYaxis()->SetTitleOffset(1.5);
       // h->SetMaximum(0.3);
-      hEF->GetXaxis()->SetLimits(0,1.5);
-      hEF->GetYaxis()->SetLimits(0,0.1);
+      //      hEF->GetXaxis()->SetLimits(0,1.5);
+      hEF->GetXaxis()->SetLimits(-3.15,3.15);
+      //      hEF->GetYaxis()->SetLimits(0,0.1);
+      hEF->SetMaximum(0.1);
       //      hEF->SetMaximum(0.8);
       if(j<9) htemp_probejet_phi_mc->SetLineColor(j+1);
       else    htemp_probejet_phi_mc->SetLineColor(j+31);
@@ -1251,15 +1264,17 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
       TString legname = "p_{T} #in [" + pt_range[j] + "," + pt_range[j+1] + "]";
       TString name_probejet_phi_data = "hist_data_probejet_phi_"+eta_name+"_"+pt_name;
       htemp_probejet_phi_data = (TH1D*)f_mpf_data->Get(name_probejet_phi_data);
-      htemp_probejet_phi_data->Print();
+      //      htemp_probejet_phi_data->Print();
       int n_ev =  htemp_probejet_phi_data->GetEntries();
       if(htemp_probejet_phi_data->Integral() > 0)htemp_probejet_phi_data->Scale(1/htemp_probejet_phi_data->Integral());
       hEF->GetXaxis()->SetTitle("probejet phi");
       hEF->GetYaxis()->SetTitle("Norm. Entries");
       hEF->GetYaxis()->SetTitleOffset(1.5);
       // h->SetMaximum(0.3);
-      hEF->GetXaxis()->SetLimits(0,1.5);
-      hEF->GetYaxis()->SetLimits(0,0.1);
+      // hEF->GetXaxis()->SetLimits(0,1.5);
+      hEF->GetXaxis()->SetLimits(-3.15,3.15);
+      //      hEF->GetYaxis()->SetLimits(0,0.1);
+      hEF->SetMaximum(0.1);
       //hEF->SetMaximum(0.8);
       if(j<9) htemp_probejet_phi_data->SetLineColor(j+1);
       else    htemp_probejet_phi_data->SetLineColor(j+31);
@@ -1287,11 +1302,12 @@ void CorrectionObject::FinalControlPlots_CorrectFormulae(){
     delete htemp_mpf_mc;
     delete c1;
     delete c7;
-    delete htemp_probejet_phi_data;
-    delete htemp_probejet_phi_mc;
-    delete htemp_probejet_muonEF_data;
-    delete htemp_probejet_muonEF_mc;
-
+    // delete htemp_probejet_phi_data;
+    // delete htemp_probejet_phi_mc;
+    // delete htemp_probejet_muonEF_data;
+    // delete htemp_probejet_muonEF_mc;
+    // delete htemp_probejet_photonEF_data;
+    // delete htemp_probejet_photonEF_mc;
   }
 
 
