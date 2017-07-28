@@ -23,6 +23,9 @@ int main(){
     TString input_path   = "/nfs/dust/cms/user/karavdia/JEC_80X_03FebreMINIAOD_JEC_Summer16_03Feb2016_V3_TEST_EFs_woMEToverPt/";
     TString weight_path  = "/nfs/dust/cms/user/karavdia/JEC_80X_03FebreMINIAOD_JEC_Summer16_03Feb2016_V3_TEST_EFs_woMEToverPt/";
 
+    // TString input_path   = "/nfs/dust/cms/user/karavdia/JEC_2016ReReco_Residuals_Summer16_03Feb2017_V3_AK4CHS_MC_Reweighted_chsMET_PhiCleaning/";
+    // TString weight_path  = "/nfs/dust/cms/user/karavdia/JEC_2016ReReco_Residuals_Summer16_03Feb2017_V3_AK4CHS_MC_Reweighted_chsMET_PhiCleaning/";
+
     // TString input_path   = "/nfs/dust/cms/user/multh/JEC/2016ReReco/Residuals/Summer16_03Feb2017_V3/AK4CHS/MC_Reweighted_chsMET_ForWeights_Down/FWD/";
     // TString weight_path  = "/nfs/dust/cms/user/multh/JEC/2016ReReco/Residuals/Summer16_03Feb2017_V3/AK4CHS/MC_Reweighted_chsMET_ForWeights_Down/";
 
